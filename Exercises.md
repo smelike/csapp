@@ -41,3 +41,56 @@ D. 将二进制 (00)10 0110 1110 0111 1011 0101 转换为十六进制。(0x26D7B
 -   76 = 4 * 16 + 12 (C)
 -   4 = 0 * 16 + 4 (4)
 从这里，能读出十六进制表示为 0x4CB2C。反过来，将一个十六进制数字转换为十进制数字，可以用相应的 16 的幂乘以每个十六进制数字。比如，给定数字 0x7AF，计算它对应的十进制值为 7 * 16^2 + 10 * 16 + 15。
+
+
+### 2.10 
+void inplace_swap(int *x, int *y) {
+    *y = *x ^ *y    // step1
+    *x = *x ^ *y    // step2
+    *y = *x ^ *y    // step3
+}
+
+/*
+    *x          *y
+    a           b
+    a           a^b
+    a^a^b       a^b
+    a^a^b   a^a^b^a^b   
+*/
+
+### 2.11
+
+void reverse_array(int a[], int cnt) {
+    int first, last;
+    for (first = 0, last = cnt -1;
+        first <= last;
+        first++, last--)
+        inplace_swap(&a[first], &a[last])
+        // 偶数数组没问题，奇数数组会出现中间位被设置为 0。如：5 4 3 2 1 -> 1 2 0 4 5
+}
+
+
+### 2.12
+
+A. x = 0x87654321 & 0xFF
+
+B. x = 0x87654321 ^ 0xFFFFFF?? (取补，最低有效字节保持不变)
+
+C. x = 0x87654321 ^ 0x21 & 0xFF
+
+### 2.13 
+
+// Declarations of functions implementing operations bis and bic
+int bis(int x, int m)
+int bic(int x, int m)
+
+// Compute x | y using only calls to functions bis and bic
+int bool_or(int x, int y) {
+    int result = ____;
+    return result;
+}
+
+int bool_xor(int x, int y) {
+    int result = ____;
+    return result;
+}
